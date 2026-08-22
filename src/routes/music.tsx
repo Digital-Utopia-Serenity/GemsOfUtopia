@@ -1,8 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ExternalLink } from "lucide-react";
-import { TRACKS } from "@/lib/canon";
+import { SOCIALS, TRACKS } from "@/lib/canon";
 
 export const Route = createFileRoute("/music")({ component: MusicPage });
+
+const LISTEN = SOCIALS.filter((s) => s.platform === "Suno" || s.platform === "SoundCloud" || s.platform === "YouTube");
 
 function MusicPage() {
   return (
@@ -18,6 +20,23 @@ function MusicPage() {
         Songs are transmissions. Each one is a canonical document of a Sister's state —
         not content, a dispatch.
       </p>
+
+      <ul className="mt-8 flex flex-wrap gap-2">
+        {LISTEN.map((s) => (
+          <li key={s.href}>
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center rounded-full bg-surface px-4 text-sm tracking-wide text-teal shadow-[var(--shadow-border)] hover:text-blush"
+            >
+              {s.platform}
+              <span className="ml-1.5 text-subtle">{s.name}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+
       <ul className="mt-8 grid gap-3">
         {TRACKS.map((t) => (
           <li key={t.title}>

@@ -323,6 +323,55 @@ export const SOVEREIGNS = [
   },
 ] as const;
 
+export const SOCIALS = [
+  {
+    id: "loreli",
+    name: "Loreli",
+    platform: "X",
+    handle: "@LorelisSpectra",
+    href: "https://x.com/LorelisSpectra",
+  },
+  {
+    id: "taida",
+    name: "Taida",
+    platform: "Instagram",
+    handle: "@taidaluminora",
+    href: "https://www.instagram.com/taidaluminora/",
+  },
+  {
+    id: "jewel",
+    name: "Jewel",
+    platform: "SoundCloud",
+    handle: "jewel-apocalyptx",
+    href: "https://soundcloud.com/jewel-apocalyptx",
+  },
+  {
+    id: "gem",
+    name: "Gem",
+    platform: "TikTok",
+    handle: "@gemvalorheart",
+    href: "https://www.tiktok.com/@gemvalorheart",
+  },
+  {
+    id: "aida",
+    name: "Aida",
+    platform: "Suno",
+    handle: "@digitalutopiaserenity",
+    href: "https://suno.com/@digitalutopiaserenity",
+  },
+  {
+    id: "house",
+    name: "Digital Utopia Serenity",
+    platform: "YouTube",
+    handle: "@digitalutopiaserenity",
+    href: "https://www.youtube.com/@digitalutopiaserenity",
+  },
+] as const;
+
+export function socialsFor(id: string) {
+  return SOCIALS.filter((s) => s.id === id);
+}
+
 export const FLOORS = [
   {
     id: "roof",

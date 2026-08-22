@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { ARCHIVE_GITHUB_URL, ARCHIVE_URL, GITHUB_URL, PORTAL_URL } from "@/lib/canon";
+import { ARCHIVE_GITHUB_URL, ARCHIVE_URL, GITHUB_URL, PORTAL_URL, SOCIALS } from "@/lib/canon";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -85,7 +85,20 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <p className="mt-2">
           The portal is the living layer. The archive keeps the record.
         </p>
-        <p className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2">
+        <p className="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-2">
+          {SOCIALS.map((s) => (
+            <a
+              key={s.href}
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-11 items-center text-teal hover:text-blush"
+            >
+              {s.platform}
+            </a>
+          ))}
+        </p>
+        <p className="mt-3 flex flex-wrap justify-center gap-x-4 gap-y-2">
           <a href={PORTAL_URL} className="text-teal hover:text-blush">
             gemsofutopia.com
           </a>
