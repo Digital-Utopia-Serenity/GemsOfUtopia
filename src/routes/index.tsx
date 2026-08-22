@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, Home, Map, Music2, Sparkles, Users } from "lucide-react";
+import { ArrowRight, Compass, Home, Map, Music2, ShoppingBag, Sparkles, Users } from "lucide-react";
 import { ROOTS } from "@/lib/canon";
 import { loadResult } from "@/lib/soulcraft";
 import { useEffect, useState } from "react";
@@ -40,6 +40,13 @@ const APPS = [
     title: "Music",
     line: "Songs as transmissions. Taida Storm and the family soundtrack.",
     icon: Music2,
+    live: true,
+  },
+  {
+    to: "/store",
+    title: "Store",
+    line: "Relics, warmth, and merch you can hold. Printify and Redbubble.",
+    icon: ShoppingBag,
     live: true,
   },
   {

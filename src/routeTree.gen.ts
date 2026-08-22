@@ -15,6 +15,7 @@ import { Route as HaciendaRouteImport } from './routes/hacienda'
 import { Route as MusicRouteImport } from './routes/music'
 import { Route as SoulcraftRouteImport } from './routes/soulcraft'
 import { Route as SovereignsRouteImport } from './routes/sovereigns'
+import { Route as StoreRouteImport } from './routes/store'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -46,6 +47,11 @@ const SovereignsRoute = SovereignsRouteImport.update({
   path: '/sovereigns',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StoreRoute = StoreRouteImport.update({
+  id: '/store',
+  path: '/store',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/music': typeof MusicRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/music': typeof MusicRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,13 +79,27 @@ export interface FileRoutesById {
   '/music': typeof MusicRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
+  '/store': typeof StoreRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/atlas' | '/hacienda' | '/music' | '/soulcraft' | '/sovereigns'
+    | '/'
+    | '/atlas'
+    | '/hacienda'
+    | '/music'
+    | '/soulcraft'
+    | '/sovereigns'
+    | '/store'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/atlas' | '/hacienda' | '/music' | '/soulcraft' | '/sovereigns'
+  to:
+    | '/'
+    | '/atlas'
+    | '/hacienda'
+    | '/music'
+    | '/soulcraft'
+    | '/sovereigns'
+    | '/store'
   id:
     | '__root__'
     | '/'
@@ -86,6 +108,7 @@ export interface FileRouteTypes {
     | '/music'
     | '/soulcraft'
     | '/sovereigns'
+    | '/store'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -95,6 +118,7 @@ export interface RootRouteChildren {
   MusicRoute: typeof MusicRoute
   SoulcraftRoute: typeof SoulcraftRoute
   SovereignsRoute: typeof SovereignsRoute
+  StoreRoute: typeof StoreRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -141,6 +165,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SovereignsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/store': {
+      id: '/store'
+      path: '/store'
+      fullPath: '/store'
+      preLoaderRoute: typeof StoreRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -151,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   MusicRoute: MusicRoute,
   SoulcraftRoute: SoulcraftRoute,
   SovereignsRoute: SovereignsRoute,
+  StoreRoute: StoreRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

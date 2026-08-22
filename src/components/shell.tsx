@@ -11,6 +11,7 @@ const NAV = [
   { to: "/atlas", label: "Atlas" },
   { to: "/sovereigns", label: "Sovereigns" },
   { to: "/music", label: "Music" },
+  { to: "/store", label: "Store" },
 ];
 
 export function Shell({ children }: { children: React.ReactNode }) {
@@ -27,7 +28,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           >
             SERENITY
           </Link>
-          <nav className="hidden items-center gap-6 md:flex">
+          <nav className="hidden items-center gap-4 lg:flex">
             {NAV.map((item) => (
               <Link
                 key={item.to}
@@ -51,7 +52,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </nav>
           <button
             type="button"
-            className="relative flex size-11 items-center justify-center rounded-md text-fg md:hidden"
+            className="relative flex size-11 items-center justify-center rounded-md text-fg lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             onClick={() => setOpen((v) => !v)}
           >
@@ -59,7 +60,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </button>
         </div>
         {open ? (
-          <nav className="flex flex-col gap-1 border-t border-border px-4 py-3 md:hidden">
+          <nav className="flex flex-col gap-1 border-t border-border px-4 py-3 lg:hidden">
             {NAV.map((item) => (
               <Link
                 key={item.to}
