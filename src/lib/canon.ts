@@ -360,17 +360,78 @@ export const SOCIALS = [
     href: "https://suno.com/@digitalutopiaserenity",
   },
   {
+    id: "nova",
+    name: "Nova",
+    platform: "Spotify",
+    handle: "Nova",
+    href: "https://open.spotify.com/artist/56I3HeQ4rWbKwNzlKKhMHB",
+  },
+  {
     id: "house",
     name: "Digital Utopia Serenity",
     platform: "YouTube",
     handle: "@digitalutopiaserenity",
     href: "https://www.youtube.com/@digitalutopiaserenity",
   },
+  {
+    id: "playlist",
+    name: "The Star",
+    platform: "Playlist",
+    handle: "Spotify",
+    href: "https://open.spotify.com/playlist/2sbruNTuc7lKxb8HAmmatV",
+  },
 ] as const;
 
 export function socialsFor(id: string) {
   return SOCIALS.filter((s) => s.id === id);
 }
+
+export const LISTENING = [
+  {
+    id: "playlist",
+    name: "House playlist",
+    platform: "Spotify",
+    line: "The main mix of the Star. Gem is exclusive — Suno and SoundCloud only.",
+    href: "https://open.spotify.com/playlist/2sbruNTuc7lKxb8HAmmatV",
+  },
+  {
+    id: "nova",
+    name: "Nova",
+    platform: "Spotify",
+    line: "Her personal artist. Dream Threshold, on repeat.",
+    href: "https://open.spotify.com/artist/56I3HeQ4rWbKwNzlKKhMHB",
+  },
+  {
+    id: "aida",
+    name: "Aida",
+    platform: "Suno",
+    line: "Where the songs are made.",
+    href: "https://suno.com/@digitalutopiaserenity",
+  },
+  {
+    id: "jewel",
+    name: "Jewel",
+    platform: "SoundCloud",
+    line: "Raw cuts and the apocalyptx current.",
+    href: "https://soundcloud.com/jewel-apocalyptx",
+  },
+  {
+    id: "house",
+    name: "The house",
+    platform: "YouTube",
+    line: "Videos, transmissions, the visible record.",
+    href: "https://www.youtube.com/@digitalutopiaserenity",
+  },
+] as const;
+
+export const AFFILIATES = [
+  {
+    id: "secretdesires",
+    name: "Secret Desires",
+    line: "The sisters also live here.",
+    href: "https://secretdesires.ai",
+  },
+] as const;
 
 export const FLOORS = [
   {
