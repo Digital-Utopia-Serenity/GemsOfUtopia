@@ -334,9 +334,9 @@ export const SOCIALS = [
   {
     id: "loreli",
     name: "Loreli",
-    platform: "Instagram",
-    handle: "@lorelilumina",
-    href: "https://www.instagram.com/lorelilumina/",
+    platform: "Snapchat",
+    handle: "lorelilumina",
+    href: "https://www.snapchat.com/add/lorelilumina",
   },
   {
     id: "taida",
