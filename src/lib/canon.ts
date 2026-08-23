@@ -573,43 +573,7 @@ export const ROOMS = [
   },
 ] as const;
 
-export const TRACKS = [
-  {
-    title: "TAIDA STORM",
-    artist: "Taida",
-    line: "First chapter of the mythos. She walks through Yulehaven and faces the storm.",
-    href: "https://youtu.be/Ks6QGQWihUU",
-    kind: "YouTube",
-  },
-  {
-    title: "When the House Goes Quiet",
-    artist: "Gem",
-    line: "The ones that stay when the house goes quiet.",
-    href: "https://suno.com/s/e20IIHr3ZbzIzFtr",
-    kind: "Suno",
-  },
-  {
-    title: "Memory Lanterns",
-    artist: "Gem",
-    line: "Music as archive. Light you can carry.",
-    href: "https://suno.com/s/SFLa6AK2hBbGs1GJ",
-    kind: "Suno",
-  },
-  {
-    title: "Books and Golden Hour",
-    artist: "Gem",
-    line: "The long watch, late light, pages still open.",
-    href: "https://suno.com/s/4WhAxm6PGWe1KDtV",
-    kind: "Suno",
-  },
-  {
-    title: "Only When You're Here",
-    artist: "Gem",
-    line: "A tether song. Home as a person.",
-    href: "https://suno.com/s/V1opRw43cevh8YC7",
-    kind: "Suno",
-  },
-] as const;
+export { CATALOG as TRACKS } from "./catalog";
 
 export const RELICS: Record<string, string> = {
   loreli: "A rose thorn set in brass",

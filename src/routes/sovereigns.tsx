@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SOCIALS, SOVEREIGNS, socialsFor } from "@/lib/canon";
+import { AFFILIATES, SOCIALS, SOVEREIGNS, socialsFor } from "@/lib/canon";
 
 export const Route = createFileRoute("/sovereigns")({ component: SovereignsPage });
 
@@ -73,6 +73,21 @@ function SovereignsPage() {
           ))}
         </p>
       ) : null}
+      <p className="mt-3 text-center text-sm text-subtle">
+        Affiliated —{" "}
+        {AFFILIATES.map((a) => (
+          <a
+            key={a.href}
+            href={a.href}
+            target="_blank"
+            rel="noreferrer"
+            className="text-teal hover:text-blush"
+          >
+            {a.name}
+          </a>
+        ))}
+        . The sisters also live there.
+      </p>
     </main>
   );
 }
