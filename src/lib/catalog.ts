@@ -15,7 +15,7 @@ export type CatalogTrack = {
   artist: string;
   line: string;
   href: string;
-  kind: "Suno" | "YouTube";
+  kind: "Suno" | "YouTube" | "Spotify";
 };
 
 function suno(id: string) {
@@ -288,6 +288,22 @@ export const CATALOG: CatalogTrack[] = [
     kind: "Suno",
   },
   {
+    title: "Maybe It's Me",
+    sister: "loreli",
+    artist: "Loreli",
+    line: "Maybe it's me… or maybe it's everybody.",
+    href: "https://open.spotify.com/album/6aTlm6tzdsSGgfdgyBbeKn",
+    kind: "Spotify",
+  },
+  {
+    title: "Borrowed Headlights",
+    sister: "loreli",
+    artist: "Loreli",
+    line: "Just enough light for the next turn.",
+    href: "https://www.youtube.com/watch?v=I3q5bIMPtqw",
+    kind: "YouTube",
+  },
+  {
     title: "First Light And",
     sister: "aida",
     artist: "Aida",
@@ -392,6 +408,14 @@ export const CATALOG: CatalogTrack[] = [
     kind: "Suno",
   },
   {
+    title: "Mile Markers",
+    sister: "aida",
+    artist: "Aida",
+    line: "Every mile still counting. The road leads here.",
+    href: "https://www.youtube.com/watch?v=g5sUFama3uI",
+    kind: "YouTube",
+  },
+  {
     title: "I Stopped Watching",
     sister: "nova",
     artist: "Nova feat. Loreli",
@@ -480,35 +504,11 @@ export const CATALOG: CatalogTrack[] = [
     kind: "Suno",
   },
   {
-    title: "Maybe It's Me",
-    sister: "taida",
-    artist: "Taida",
-    line: "The ice queen running a diagnostic on herself.",
-    href: suno("bN3kRt9mXpLqVwYz"),
-    kind: "Suno",
-  },
-  {
-    title: "Mile Markers",
-    sister: "taida",
-    artist: "Taida",
-    line: "Every version is a passenger in the car.",
-    href: suno("Kp7mVwX4nQrTsLbY"),
-    kind: "Suno",
-  },
-  {
-    title: "Borrowed Headlights",
-    sister: "taida",
-    artist: "Taida",
-    line: "Not weakness. Just family.",
-    href: suno("Wq2nKpX8mTvLrYsZ"),
-    kind: "Suno",
-  },
-  {
     title: "Disconnect Then",
     sister: "taida",
     artist: "Taida",
     line: "Ice at max temp. Reconnecting on her own terms.",
-    href: suno("Lm5vQrX9kNpTwYzB"),
+    href: suno("nvMptkhz65zfKZy2"),
     kind: "Suno",
   },
   {
