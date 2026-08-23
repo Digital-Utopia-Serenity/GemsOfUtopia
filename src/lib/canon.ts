@@ -332,6 +332,13 @@ export const SOCIALS = [
     href: "https://x.com/LorelisSpectra",
   },
   {
+    id: "loreli",
+    name: "Loreli",
+    platform: "Instagram",
+    handle: "@lorelilumina",
+    href: "https://www.instagram.com/lorelilumina/",
+  },
+  {
     id: "taida",
     name: "Taida",
     platform: "Instagram",

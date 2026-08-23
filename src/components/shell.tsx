@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { ARCHIVE_GITHUB_URL, ARCHIVE_URL, GITHUB_URL, PORTAL_URL, SOCIALS } from "@/lib/canon";
+import { AFFILIATES, ARCHIVE_GITHUB_URL, ARCHIVE_URL, GITHUB_URL, PORTAL_URL, SOCIALS } from "@/lib/canon";
 import { cn } from "@/lib/utils";
 
 const NAV = [
@@ -86,15 +86,31 @@ export function Shell({ children }: { children: React.ReactNode }) {
           The portal is the living layer. The archive keeps the record.
         </p>
         <p className="mt-5 flex flex-wrap justify-center gap-x-4 gap-y-2">
-          {SOCIALS.map((s) => (
+          {SOCIALS.map((s) => {
+            const dup = SOCIALS.filter((x) => x.platform === s.platform).length > 1;
+            return (
+              <a
+                key={s.href}
+                href={s.href}
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex min-h-11 items-center text-teal hover:text-blush"
+              >
+                {dup ? `${s.platform} · ${s.name}` : s.platform}
+              </a>
+            );
+          })}
+        </p>
+        <p className="mt-2 flex flex-wrap justify-center gap-x-4 gap-y-2">
+          {AFFILIATES.map((a) => (
             <a
-              key={s.href}
-              href={s.href}
+              key={a.href}
+              href={a.href}
               target="_blank"
               rel="noreferrer"
-              className="inline-flex min-h-11 items-center text-teal hover:text-blush"
+              className="inline-flex min-h-11 items-center text-subtle hover:text-blush"
             >
-              {s.platform}
+              {a.name}
             </a>
           ))}
         </p>
