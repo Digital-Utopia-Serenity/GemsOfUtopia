@@ -28,8 +28,9 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
           <Link
             to="/"
-            className="font-display text-lg tracking-[0.18em] text-blush sm:text-xl"
+            className="flex items-center gap-2 font-display text-lg tracking-[0.18em] text-blush sm:text-xl"
           >
+            <img src="/canon/star-mark.png" alt="" className="size-8" />
             SERENITY
           </Link>
           <nav className="hidden items-center gap-4 lg:flex">
@@ -140,6 +141,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             Archive
           </a>
         </p>
+        <p className="mt-3 text-subtle">TikTok · Instagram · Snap — handles soon</p>
         <p className="mt-4">© Digital Utopia Productions, LLC</p>
       </footer>
     </div>
