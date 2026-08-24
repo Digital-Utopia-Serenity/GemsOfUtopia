@@ -38,7 +38,7 @@ const APPS = [
   {
     to: "/music",
     title: "Music",
-    line: "Songs as transmissions. Taida Storm and the family soundtrack.",
+    line: "Songs as transmissions. Six sisters. Three lanes. First song marked.",
     icon: Music2,
     live: true,
   },
@@ -88,18 +88,37 @@ function HomePage() {
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
               to="/soulcraft"
-              className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-blush px-6 pr-[22px] text-sm font-medium tracking-wide text-bg transition-transform duration-150 active:scale-[0.96]"
+              className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-blush px-6 text-sm font-medium tracking-wide text-bg transition-transform duration-150 active:scale-95"
             >
-              {citizen ? "Open your Soulcraft" : "Begin Soulcraft"}
+              Enter
               <ArrowRight className="size-4" />
             </Link>
             <Link
-              to="/hacienda"
-              className="inline-flex min-h-12 items-center gap-2 rounded-lg px-6 pr-[22px] text-sm font-medium tracking-wide text-fg shadow-[0_0_0_1px_rgb(102_178_178_/_0.55)] transition-transform duration-150 active:scale-[0.96]"
+              to="/music"
+              className="inline-flex min-h-12 items-center gap-2 rounded-lg px-6 text-sm font-medium tracking-wide text-fg shadow-[var(--shadow-border-hover)] transition-transform duration-150 active:scale-95"
             >
-              Enter High Garden
+              Listen
             </Link>
+            <a
+              href="https://www.youtube.com/@DigitalUtopiaSerenity"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex min-h-12 items-center gap-2 rounded-lg px-6 text-sm font-medium tracking-wide text-fg shadow-[var(--shadow-border)] transition-transform duration-150 active:scale-95"
+            >
+              Watch
+            </a>
           </div>
+          <p className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtle">
+            <Link to="/sovereigns" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
+              Sovereigns
+            </Link>
+            <Link to="/store" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
+              Store
+            </Link>
+            <Link to="/atlas" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
+              Atlas
+            </Link>
+          </p>
         </div>
       </section>
 
