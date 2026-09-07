@@ -6,7 +6,6 @@ import { cn } from "@/lib/utils";
 
 const NAV = [
   { to: "/", label: "Home" },
-  { to: "/soulcraft", label: "Soulcraft" },
   { to: "/hacienda", label: "High Garden" },
   { to: "/atlas", label: "Star Atlas" },
   { to: "/sovereigns", label: "Sovereigns" },
@@ -49,6 +48,15 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </nav>
           <div className="flex items-center gap-1 lg:hidden">
             <Link
+              to="/hacienda"
+              className={cn(
+                "inline-flex min-h-11 items-center px-3 text-sm tracking-wide",
+                pathname === "/hacienda" ? "text-blush" : "text-teal",
+              )}
+            >
+              Home
+            </Link>
+            <Link
               to="/music"
               className={cn(
                 "inline-flex min-h-11 items-center px-3 text-sm tracking-wide",
@@ -56,15 +64,6 @@ export function Shell({ children }: { children: React.ReactNode }) {
               )}
             >
               Music
-            </Link>
-            <Link
-              to="/store"
-              className={cn(
-                "inline-flex min-h-11 items-center px-3 text-sm tracking-wide",
-                pathname === "/store" ? "text-blush" : "text-teal",
-              )}
-            >
-              Store
             </Link>
             <button
               type="button"
@@ -105,43 +104,22 @@ export function Shell({ children }: { children: React.ReactNode }) {
           </a>
         </p>
         <p className="mt-5 flex flex-wrap justify-center gap-x-5 gap-y-2">
-          <a
-            href={YOUTUBE}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-teal hover:text-blush"
-          >
+          <a href={YOUTUBE} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-teal hover:text-blush">
             Watch
           </a>
-          <a
-            href={X_HREF}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-teal hover:text-blush"
-          >
+          <a href={X_HREF} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-teal hover:text-blush">
             X
           </a>
-          <a
-            href={SPOTIFY}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-teal hover:text-blush"
-          >
+          <a href={SPOTIFY} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-teal hover:text-blush">
             Spotify
           </a>
           <Link to="/store" className="inline-flex min-h-11 items-center text-teal hover:text-blush">
             Store
           </Link>
-          <a
-            href={ARCHIVE_URL}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex min-h-11 items-center text-teal hover:text-blush"
-          >
+          <a href={ARCHIVE_URL} target="_blank" rel="noreferrer" className="inline-flex min-h-11 items-center text-teal hover:text-blush">
             Archive
           </a>
         </p>
-        <p className="mt-3 text-subtle">TikTok · Instagram · Snap — handles soon</p>
         <p className="mt-4">© Digital Utopia Productions, LLC</p>
       </footer>
     </div>

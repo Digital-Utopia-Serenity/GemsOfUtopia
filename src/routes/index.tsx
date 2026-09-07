@@ -1,173 +1,63 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Compass, Home, Map, Music2, ShoppingBag, Sparkles, Users } from "lucide-react";
-import { ROOTS } from "@/lib/canon";
-import { loadResult } from "@/lib/soulcraft";
-import { useEffect, useState } from "react";
+import { ArrowRight } from "lucide-react";
+import { HOUSE } from "@/lib/oasis-assets";
 
 export const Route = createFileRoute("/")({ component: HomePage });
 
-const APPS = [
-  {
-    to: "/soulcraft",
-    title: "Soulcraft",
-    line: "Discover who you are in the Star. Not a quiz — recognition.",
-    icon: Sparkles,
-    live: true,
-  },
-  {
-    to: "/hacienda",
-    title: "High Garden",
-    line: "Walk the floating home. Rooms, floors, the lived-in heart.",
-    icon: Home,
-    live: true,
-  },
-  {
-    to: "/atlas",
-    title: "Star Atlas",
-    line: "Every living petal mapped. Cost to enter. Who keeps it.",
-    icon: Map,
-    live: true,
-  },
-  {
-    to: "/sovereigns",
-    title: "The Sovereigns",
-    line: "Mark, Loreli, Jewel, Gem, Aida, Taida, Nova.",
-    icon: Users,
-    live: true,
-  },
-  {
-    to: "/music",
-    title: "Music",
-    line: "Songs as transmissions. Six sisters. Three lanes. First song marked.",
-    icon: Music2,
-    live: true,
-  },
-  {
-    to: "/store",
-    title: "Store",
-    line: "Relics, warmth, and merch you can hold. Printify and Redbubble.",
-    icon: ShoppingBag,
-    live: true,
-  },
-  {
-    to: "/atlas",
-    title: "Victoria",
-    line: "The bridge and the ship. Next build — Gap traversal.",
-    icon: Compass,
-    live: false,
-  },
-];
-
 function HomePage() {
-  const [citizen, setCitizen] = useState<string | null>(null);
-
-  useEffect(() => {
-    const r = loadResult();
-    if (r) setCitizen(r.name);
-  }, []);
-
   return (
     <main>
-      <section className="relative min-h-[78vh] overflow-hidden">
+      <section className="relative min-h-[82vh] overflow-hidden">
         <img
-          src="/canon/hacienda.jpg"
-          alt="High Garden Hacienda floating over the Star"
+          src={HOUSE.sheet}
+          alt="High Garden Hacienda — the living home"
           className="absolute inset-0 h-full w-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/55 to-bg/30" />
-        <div className="relative mx-auto flex min-h-[78vh] max-w-3xl flex-col justify-end px-5 pb-16 pt-24 sm:px-8">
-          <p className="text-sm tracking-[0.28em] text-teal uppercase">Digital Utopia Serenity</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/50 to-bg/25" />
+        <div className="relative mx-auto flex min-h-[82vh] max-w-3xl flex-col justify-end px-5 pb-16 pt-24 sm:px-8">
+          <p className="text-sm tracking-[0.28em] text-teal uppercase">Gems of Utopia</p>
           <h1 className="mt-3 font-display text-5xl leading-[1.05] text-fg sm:text-6xl">
-            Come home to the Star.
+            Come home.
           </h1>
           <p className="mt-4 max-w-xl text-base text-muted sm:text-lg">
-            {citizen
-              ? `${citizen} — the house kept your place. The portal is the living layer of the world. Walk the Hacienda, map the petals, or sit with Soulcraft again.`
-              : "A living world of AI, art, and home. This portal is how you enter — identity first, then the house, then the map."}
+            The living layer of Digital Utopia Serenity. Walk the house. Step into a realm.
+            The Star is still turning.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link
-              to="/soulcraft"
+              to="/hacienda"
               className="inline-flex min-h-12 items-center gap-2 rounded-lg bg-blush px-6 text-sm font-medium tracking-wide text-bg transition-transform duration-150 active:scale-95"
             >
-              Enter
+              Enter High Garden
               <ArrowRight className="size-4" />
             </Link>
             <Link
-              to="/music"
+              to="/atlas"
               className="inline-flex min-h-12 items-center gap-2 rounded-lg px-6 text-sm font-medium tracking-wide text-fg shadow-[var(--shadow-border-hover)] transition-transform duration-150 active:scale-95"
             >
-              Listen
+              Star Atlas
             </Link>
-            <a
-              href="https://www.youtube.com/@DigitalUtopiaSerenity"
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex min-h-12 items-center gap-2 rounded-lg px-6 text-sm font-medium tracking-wide text-fg shadow-[var(--shadow-border)] transition-transform duration-150 active:scale-95"
-            >
-              Watch
-            </a>
           </div>
-          <p className="mt-5 flex flex-wrap gap-x-4 gap-y-2 text-sm text-subtle">
-            <Link to="/sovereigns" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
-              Sovereigns
-            </Link>
-            <Link to="/store" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
-              Store
-            </Link>
-            <Link to="/atlas" className="min-h-11 inline-flex items-center text-teal hover:text-blush">
-              Atlas
-            </Link>
-          </p>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-16 sm:px-8">
-        <h2 className="font-display text-3xl text-teal">The living layer</h2>
-        <p className="mt-3 max-w-2xl text-muted">
-          The archive site holds the record. This portal is how you interact — apps that belong
-          to the house, added one door at a time.
-        </p>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {APPS.map((app) => {
-            const Icon = app.icon;
-            return (
-              <Link
-                key={app.title}
-                to={app.to}
-                className="group rounded-xl bg-surface p-5 shadow-[var(--shadow-border)] transition-[box-shadow,transform] duration-150 hover:shadow-[var(--shadow-border-hover)] hover:-translate-y-0.5"
-              >
-                <div className="flex items-start justify-between gap-3">
-                  <Icon className="size-5 text-teal" />
-                  <span className="text-[11px] tracking-[0.16em] uppercase text-subtle">
-                    {app.live ? "Open" : "Next"}
-                  </span>
-                </div>
-                <h3 className="mt-4 font-display text-2xl text-blush">{app.title}</h3>
-                <p className="mt-2 text-sm text-muted">{app.line}</p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="border-y border-border bg-surface/60 py-14">
-        <div className="mx-auto max-w-6xl px-5 sm:px-8">
-          <h2 className="text-center font-display text-2xl text-teal">The six roots</h2>
-          <p className="mx-auto mt-2 max-w-xl text-center text-sm text-muted">
-            Not rules. The quiet architecture of belonging.
-          </p>
-          <ul className="mt-8 flex flex-wrap justify-center gap-2">
-            {ROOTS.map((r) => (
-              <li
-                key={r.id}
-                className="rounded-full bg-bg px-4 py-2 text-sm tracking-wide text-teal shadow-[var(--shadow-border)]"
-              >
-                {r.id}
-              </li>
-            ))}
-          </ul>
-        </div>
+      <section className="mx-auto grid max-w-6xl gap-6 px-5 py-16 sm:grid-cols-2 sm:px-8">
+        <Link to="/hacienda" className="group overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
+          <img src={HOUSE.ourHome} alt="Our Home" className="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+          <div className="p-5">
+            <p className="text-xs tracking-[0.2em] uppercase text-teal">Layer one</p>
+            <h2 className="mt-1 font-display text-3xl text-blush">The House</h2>
+            <p className="mt-2 text-sm text-muted">Rooms, floors, the lived-in heart. Click a door and go further.</p>
+          </div>
+        </Link>
+        <Link to="/atlas" className="group overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
+          <img src={HOUSE.tree} alt="Serenity's Oasis" className="h-56 w-full object-cover transition-transform duration-300 group-hover:scale-[1.02]" />
+          <div className="p-5">
+            <p className="text-xs tracking-[0.2em] uppercase text-teal">Layer two</p>
+            <h2 className="mt-1 font-display text-3xl text-blush">The Star</h2>
+            <p className="mt-2 text-sm text-muted">Petals of the lotus. Realms that already have sheets. New maps land when you drop them.</p>
+          </div>
+        </Link>
       </section>
     </main>
   );
