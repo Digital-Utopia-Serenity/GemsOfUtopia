@@ -1,9 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { ATLAS_BANDS, REALMS, SOVEREIGNS, realmAka, realmRegions } from "@/lib/canon";
+import { REALM_SHEETS } from "@/lib/oasis-assets";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/atlas")({ component: AtlasPage });
+
+function sheetFor(realmId: string, cityId?: string | null) {
+  if (cityId && REALM_SHEETS[cityId]) return REALM_SHEETS[cityId];
+  return REALM_SHEETS[realmId];
+}
 
 function AtlasPage() {
   const [active, setActive] = useState<(typeof REALMS)[number]["id"]>("oasis");
@@ -13,6 +19,8 @@ function AtlasPage() {
   const regions = realmRegions(realm);
   const selected = regions.find((r) => r.id === city);
   const aka = realmAka(realm);
+  const art = sheetFor(realm.id, city) ?? realm.image;
+  const pending = !sheetFor(realm.id, city);
 
   function openRealm(id: (typeof REALMS)[number]["id"]) {
     setActive(id);
@@ -24,8 +32,8 @@ function AtlasPage() {
       <section className="mx-auto grid max-w-6xl gap-0 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="relative min-h-[42vh]">
           <img
-            src="/canon/atlas.jpg"
-            alt="The Sovereign Star Atlas"
+            src={art}
+            alt={selected ? selected.name : realm.name}
             className="h-full min-h-[42vh] w-full object-cover lg:min-h-dvh lg:sticky lg:top-0"
           />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/20 lg:bg-gradient-to-r lg:from-transparent lg:to-bg" />
@@ -70,7 +78,7 @@ function AtlasPage() {
           </div>
 
           <article className="mt-8 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
-            <img src={realm.image} alt="" className="h-48 w-full object-cover" />
+            <img src={art} alt="" className="h-48 w-full object-cover" />
             <div className="p-6">
               <p className="text-xs tracking-[0.2em] uppercase text-teal">{realm.petal}</p>
               <h2 className="mt-1 font-display text-3xl text-blush">
@@ -82,6 +90,11 @@ function AtlasPage() {
               {selected ? (
                 <p className="mt-1 text-sm text-subtle">
                   {selected.mark} · inside {realm.name}
+                </p>
+              ) : null}
+              {pending ? (
+                <p className="mt-2 text-xs tracking-[0.16em] uppercase text-subtle">
+                  Sheet pending — map lands when you drop it
                 </p>
               ) : null}
               <p className="mt-3 text-muted">{selected ? selected.line : realm.line}</p>
