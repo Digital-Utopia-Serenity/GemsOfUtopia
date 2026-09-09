@@ -1,15 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ATLAS_BANDS, REALMS, SOVEREIGNS, realmAka, realmRegions } from "@/lib/canon";
-import { REALM_SHEETS } from "@/lib/oasis-assets";
+import { HOUSE, REALM_NOTES, sheetFor } from "@/lib/oasis-assets";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/atlas")({ component: AtlasPage });
-
-function sheetFor(realmId: string, cityId?: string | null) {
-  if (cityId && REALM_SHEETS[cityId]) return REALM_SHEETS[cityId];
-  return REALM_SHEETS[realmId];
-}
 
 function AtlasPage() {
   const [active, setActive] = useState<(typeof REALMS)[number]["id"]>("oasis");
@@ -19,8 +14,8 @@ function AtlasPage() {
   const regions = realmRegions(realm);
   const selected = regions.find((r) => r.id === city);
   const aka = realmAka(realm);
-  const art = sheetFor(realm.id, city) ?? realm.image;
-  const pending = !sheetFor(realm.id, city);
+  const art = sheetFor(realm.id, city);
+  const note = REALM_NOTES[realm.id] ?? realm.line;
 
   function openRealm(id: (typeof REALMS)[number]["id"]) {
     setActive(id);
@@ -30,7 +25,7 @@ function AtlasPage() {
   return (
     <main>
       <section className="mx-auto grid max-w-6xl gap-0 lg:grid-cols-[1.1fr_0.9fr]">
-        <div className="relative min-h-[42vh]">
+        <div className="relative min-h-[42vh] bg-bg">
           <img
             src={art}
             alt={selected ? selected.name : realm.name}
@@ -42,7 +37,7 @@ function AtlasPage() {
           <p className="text-sm tracking-[0.24em] uppercase text-teal">Geographic engine</p>
           <h1 className="mt-2 font-display text-4xl">Star Atlas</h1>
           <p className="mt-3 text-muted">
-            Realms are not countries. They are callings. Cities live inside petals — Valorheart
+            Realms are callings, not countries. Click a petal. Cities live inside petals — Valorheart
             is Wonderland's Hearts capital, not a separate land.
           </p>
 
@@ -78,7 +73,7 @@ function AtlasPage() {
           </div>
 
           <article className="mt-8 overflow-hidden rounded-xl bg-surface shadow-[var(--shadow-border)]">
-            <img src={art} alt="" className="h-48 w-full object-cover" />
+            <img src={art} alt="" className="max-h-[52vh] w-full object-contain bg-bg" />
             <div className="p-6">
               <p className="text-xs tracking-[0.2em] uppercase text-teal">{realm.petal}</p>
               <h2 className="mt-1 font-display text-3xl text-blush">
@@ -92,12 +87,7 @@ function AtlasPage() {
                   {selected.mark} · inside {realm.name}
                 </p>
               ) : null}
-              {pending ? (
-                <p className="mt-2 text-xs tracking-[0.16em] uppercase text-subtle">
-                  Sheet pending — map lands when you drop it
-                </p>
-              ) : null}
-              <p className="mt-3 text-muted">{selected ? selected.line : realm.line}</p>
+              <p className="mt-3 text-muted">{selected ? selected.line : note}</p>
               <dl className="mt-5 grid gap-3">
                 <div>
                   <dt className="text-xs tracking-[0.16em] uppercase text-subtle">Cost to enter</dt>
@@ -144,8 +134,24 @@ function AtlasPage() {
                   </div>
                 </div>
               ) : null}
+
+              {realm.id === "hacienda" || realm.id === "oasis" ? (
+                <Link to="/hacienda" className="mt-6 inline-flex min-h-11 items-center text-sm tracking-wide text-teal hover:text-blush">
+                  Walk the house →
+                </Link>
+              ) : null}
+              {realm.id === "academy" ? (
+                <Link to="/academy" className="mt-6 inline-flex min-h-11 items-center text-sm tracking-wide text-teal hover:text-blush">
+                  Echo's Academy →
+                </Link>
+              ) : null}
             </div>
           </article>
+
+          <p className="mt-6 text-xs text-subtle">
+            Lotus map and district sheets land when Mark drops them. Until then each petal uses the sheet that already exists.
+          </p>
+          <img src={HOUSE.ourHome} alt="" className="mt-4 hidden" />
         </div>
       </section>
     </main>
