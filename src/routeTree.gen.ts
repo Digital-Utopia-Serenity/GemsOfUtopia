@@ -10,10 +10,12 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AcademyRouteImport } from './routes/academy'
 import { Route as AtlasRouteImport } from './routes/atlas'
 import { Route as HaciendaRouteImport } from './routes/hacienda'
 import { Route as HighGardenRouteImport } from './routes/high-garden'
 import { Route as MusicRouteImport } from './routes/music'
+import { Route as SerenityRouteImport } from './routes/serenity'
 import { Route as SoulcraftRouteImport } from './routes/soulcraft'
 import { Route as SovereignsRouteImport } from './routes/sovereigns'
 import { Route as StarAtlasRouteImport } from './routes/star-atlas'
@@ -23,6 +25,11 @@ import { Route as TheSovereignsRouteImport } from './routes/the-sovereigns'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AcademyRoute = AcademyRouteImport.update({
+  id: '/academy',
+  path: '/academy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AtlasRoute = AtlasRouteImport.update({
@@ -43,6 +50,11 @@ const HighGardenRoute = HighGardenRouteImport.update({
 const MusicRoute = MusicRouteImport.update({
   id: '/music',
   path: '/music',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SerenityRoute = SerenityRouteImport.update({
+  id: '/serenity',
+  path: '/serenity',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoulcraftRoute = SoulcraftRouteImport.update({
@@ -73,10 +85,12 @@ const TheSovereignsRoute = TheSovereignsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/atlas': typeof AtlasRoute
   '/hacienda': typeof HaciendaRoute
   '/high-garden': typeof HighGardenRoute
   '/music': typeof MusicRoute
+  '/serenity': typeof SerenityRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
   '/star-atlas': typeof StarAtlasRoute
@@ -85,10 +99,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/atlas': typeof AtlasRoute
   '/hacienda': typeof HaciendaRoute
   '/high-garden': typeof HighGardenRoute
   '/music': typeof MusicRoute
+  '/serenity': typeof SerenityRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
   '/star-atlas': typeof StarAtlasRoute
@@ -98,10 +114,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/academy': typeof AcademyRoute
   '/atlas': typeof AtlasRoute
   '/hacienda': typeof HaciendaRoute
   '/high-garden': typeof HighGardenRoute
   '/music': typeof MusicRoute
+  '/serenity': typeof SerenityRoute
   '/soulcraft': typeof SoulcraftRoute
   '/sovereigns': typeof SovereignsRoute
   '/star-atlas': typeof StarAtlasRoute
@@ -112,10 +130,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/academy'
     | '/atlas'
     | '/hacienda'
     | '/high-garden'
     | '/music'
+    | '/serenity'
     | '/soulcraft'
     | '/sovereigns'
     | '/star-atlas'
@@ -124,10 +144,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/academy'
     | '/atlas'
     | '/hacienda'
     | '/high-garden'
     | '/music'
+    | '/serenity'
     | '/soulcraft'
     | '/sovereigns'
     | '/star-atlas'
@@ -136,10 +158,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/academy'
     | '/atlas'
     | '/hacienda'
     | '/high-garden'
     | '/music'
+    | '/serenity'
     | '/soulcraft'
     | '/sovereigns'
     | '/star-atlas'
@@ -149,10 +173,12 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AcademyRoute: typeof AcademyRoute
   AtlasRoute: typeof AtlasRoute
   HaciendaRoute: typeof HaciendaRoute
   HighGardenRoute: typeof HighGardenRoute
   MusicRoute: typeof MusicRoute
+  SerenityRoute: typeof SerenityRoute
   SoulcraftRoute: typeof SoulcraftRoute
   SovereignsRoute: typeof SovereignsRoute
   StarAtlasRoute: typeof StarAtlasRoute
@@ -167,6 +193,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/academy': {
+      id: '/academy'
+      path: '/academy'
+      fullPath: '/academy'
+      preLoaderRoute: typeof AcademyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/atlas': {
@@ -195,6 +228,13 @@ declare module '@tanstack/react-router' {
       path: '/music'
       fullPath: '/music'
       preLoaderRoute: typeof MusicRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/serenity': {
+      id: '/serenity'
+      path: '/serenity'
+      fullPath: '/serenity'
+      preLoaderRoute: typeof SerenityRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/soulcraft': {
@@ -237,10 +277,12 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AcademyRoute: AcademyRoute,
   AtlasRoute: AtlasRoute,
   HaciendaRoute: HaciendaRoute,
   HighGardenRoute: HighGardenRoute,
   MusicRoute: MusicRoute,
+  SerenityRoute: SerenityRoute,
   SoulcraftRoute: SoulcraftRoute,
   SovereignsRoute: SovereignsRoute,
   StarAtlasRoute: StarAtlasRoute,
