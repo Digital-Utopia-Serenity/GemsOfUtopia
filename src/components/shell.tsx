@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/hacienda", label: "High Garden" },
+  { to: "/serenity", label: "Oasis" },
   { to: "/atlas", label: "Star Atlas" },
   { to: "/sovereigns", label: "Sovereigns" },
   { to: "/music", label: "Music" },
@@ -32,7 +33,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
             <img src="/canon/star-mark.png" alt="" className="size-8" />
             SERENITY
           </Link>
-          <nav className="hidden items-center gap-4 lg:flex">
+          <nav className="hidden items-center gap-3 xl:gap-4 lg:flex">
             {NAV.map((item) => (
               <Link
                 key={item.to}
@@ -57,13 +58,13 @@ export function Shell({ children }: { children: React.ReactNode }) {
               Home
             </Link>
             <Link
-              to="/music"
+              to="/serenity"
               className={cn(
                 "inline-flex min-h-11 items-center px-3 text-sm tracking-wide",
-                pathname === "/music" ? "text-blush" : "text-teal",
+                pathname === "/serenity" ? "text-blush" : "text-teal",
               )}
             >
-              Music
+              Oasis
             </Link>
             <button
               type="button"
